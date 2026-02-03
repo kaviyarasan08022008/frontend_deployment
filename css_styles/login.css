@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: #fff;
+  width: 450px;
+  height: 600px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+  background-color:#0d47a1;
+  color: white;
+  padding: 30px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.role-selection button {
+  background-color: #185abe;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.role-selection button:hover {
+  background-color: #0d47a1;
+}
+
+.login-form {
+  margin-top: 20px;
+}
+
+.login-form input {
+  width: 90%;
+  padding: 8px;
+  margin: 8px 0;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-btn {
+  background-color: #f57c00;
+  color: white;
+  border: none;
+  font-size: 17px;
+  padding: 8px 30px;
+  border-radius: 5px;
+  margin-top: 35px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #e65100;
+}
+h4{
+  margin-right: 300px;
+  padding: 2px;
+}
+.remember{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.remember a {
+  text-decoration: none;
+  color: #8e00f3;
+  margin-top: 20px;
+}
+.regi{
+  margin-top: 15px;
+}
+
+.back-sticker {
+  position: fixed;
+  margin-right: 30px;
+  margin-top: 325px;
+  font-size: 35px;
+  padding: 5px 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tracking Page</title>
+    <link rel="stylesheet" href="../css_styles/tracking.css">
+    <link rel="stylesheet" href="../css_styles/nav&foot.css">
+    <link rel="shortcut icon" href="../asset/icon.jpg" type="image/x-icon">
+</head>
+
+<body>
+    <header class="nav-bar">
+        <div class="title">
+            <img id="logo" src="../asset/village voice logo.png" alt="Village Voice Logo">
+            <a href="#" class="top">Village voice</a>
+            <link rel="stylesheet" href="./css_styles/style.css">
+            <div class="back-sticker" onclick="history.back()">➡️</div>
+        </div>
+        <nav>
+            <ul class="links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="./login.html">File Complaints</a></li>
+                <li><a href="./tracking.html ">Track Complaints</a></li>
+                <li><a href="./login.html">Login</a></li>
+                <li><a href="./register.html">Register</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="track-container">
+        <div class="header">
+            <h2>Track Your Complaint</h2>
+            <p>Enter your complaint ID to check status</p>
+        </div>
+
+        <div class="form">
+            <label for="people-id">Complaint ID</label>
+            <input type="text" id="people-id" placeholder="Enter Complaint ID (e.g., RPT5)" />
+            <button onclick="trackComplaints()">Track Complaints</button>
+        </div>
+
+        <div id="results-area" class="status-box" style="display:none;">
+            <h3>Your Complaints</h3>
+            <div id="complaints-list"></div>
+        </div>
+    </div>
+
+    <script>
+        async function trackComplaints() {
+            const inputVal = document.getElementById("people-id").value.trim();
+            if (!inputVal) {
+                alert("Please enter Complaint ID");
+                return;
+            }
+
+            // Extract numeric ID from "RPT123" or just "123"
+            let complaintId = inputVal.toUpperCase().replace("RPT", "");
+            
+            if (isNaN(complaintId) || complaintId === "") {
+                 alert("Invalid Complaint ID format. Please use format like RPT5 or just 5.");
+                 return;
+            }
+
+            try {
+                const res = await fetch(`https://backend-deployment-elh1.onrender.com/complaints/${complaintId}`);
+                
+                const resultsArea = document.getElementById("results-area");
+                const list = document.getElementById("complaints-list");
+                list.innerHTML = "";
+
+                if (!res.ok) {
+                    if (res.status === 404) {
+                         list.innerHTML = "<p>Complaint not found.</p>";
+                         resultsArea.style.display = "block";
+                    } else {
+                        throw new Error("API Error");
+                    }
+                    return;
+                }
+
+                const c = await res.json();
+
+                const item = document.createElement("div");
+                item.className = "details";
+                item.style.marginBottom = "20px";
+                item.style.borderBottom = "1px solid #ccc";
+                item.style.paddingBottom = "10px";
+
+                let statusColor = "orange";
+                if (c.status === "solved") statusColor = "green";
+                if (c.status === "not-approved") statusColor = "red";
+
+                item.innerHTML = `
+                    <p><b>Complaint ID:</b> RPT${c.id}</p>
+                    <p><b>Category:</b> ${c.category}</p>
+                    <p><b>Village:</b> ${c.village}</p>
+                    <p><b>Date:</b> ${c.incident_date}</p>
+                    <p><b>Status:</b> <span style="color:${statusColor};font-weight:bold;text-transform:uppercase">${c.status || 'Pending'}</span></p>
+                `;
+                list.appendChild(item);
+
+                resultsArea.style.display = "block";
+
+            } catch (error) {
+                console.error(error);
+                alert("❌ Error fetching data");
+            }
+        }
+    </script>
+</body>
+
+</html>
