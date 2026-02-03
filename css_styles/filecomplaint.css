@@ -92,6 +92,8 @@
 
     .submit {
       margin-right: 400px;
+      width: 150px;
+      /* Added width for better button size */
     }
 
     .file {
@@ -100,7 +102,7 @@
       color: white;
       text-decoration: none;
       border: none;
-      padding:10px;
+      padding: 10px;
       font-size: 16px;
       border-radius: 5px;
       cursor: pointer;
@@ -112,11 +114,40 @@
     }
 
     .back-sticker {
-  position: absolute;
-  top: 70px;
-  margin-right:18px;
-  font-size: 35px;
-  padding: 5px 5px;
-  border-radius: 50%;
-  cursor: pointer;
-}
+      position: absolute;
+      top: 70px;
+      margin-right: 18px;
+      font-size: 35px;
+      padding: 5px 5px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 95%;
+      }
+
+      .row {
+        flex-direction: column;
+      }
+
+      .submit {
+        margin-right: 0;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .file {
+        margin-left: 0;
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+
+      .back-sticker {
+        top: 20px;
+        right: 10px;
+        font-size: 24px;
+      }
+    }

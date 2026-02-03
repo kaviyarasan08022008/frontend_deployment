@@ -60,10 +60,12 @@
       background-color: #dadada;
 
     }
-    tbody tr:hover{
+
+    tbody tr:hover {
       cursor: pointer;
       color: white;
     }
+
     .summary-cards {
       display: flex;
       gap: 20px;
@@ -90,7 +92,7 @@
       color: #000000;
     }
 
-    .card.orange{
+    .card.orange {
       box-shadow: 5px 5px 5px#242424;
     }
 
@@ -152,12 +154,13 @@
     .status.resolved {
       background-color: #4caf50;
     }
-    .new{
+
+    .new {
       margin-bottom: 15px;
       font-size: 25px;
     }
 
-    .ed-but{
+    .ed-but {
       background-color: #1aeb16;
       color: white;
       text-decoration: none;
@@ -169,7 +172,7 @@
       margin-left: 5px;
     }
 
-     .del-but{
+    .del-but {
       background-color: #e73930;
       color: white;
       text-decoration: none;
@@ -181,12 +184,50 @@
       margin-left: 5px;
     }
 
-.back-sticker {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  font-size: 35px;
-  padding: 5px 5px;
-  border-radius: 50%;
-  cursor: pointer;
-}
+    .back-sticker {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 35px;
+      padding: 5px 5px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 15px;
+      }
+
+      .tag {
+        margin: 0 0 10px 0;
+        font-size: 20px;
+        text-align: center;
+      }
+
+      #admin-logo {
+        margin: 0 0 10px 0;
+        margin-left: 0;
+      }
+
+      .dashboard {
+        padding: 15px;
+      }
+
+      .summary-cards {
+        flex-direction: column;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+
+      .back-sticker {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 24px;
+      }
+    }

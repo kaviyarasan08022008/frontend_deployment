@@ -1,4 +1,3 @@
-
 .content-wrapper {
     flex-grow: 1;
     text-align: center;
@@ -67,17 +66,20 @@ h3 {
     transition: width 0.3s ease-in-out;
     z-index: 0;
 }
-.Complaints > span{
+
+.Complaints>span {
     position: relative;
     z-index: 1;
 }
-.Complaints:hover::before{
+
+.Complaints:hover::before {
     width: 100%;
 }
 
 .Complaints:hover span {
     color: white;
 }
+
 .Tracking {
     background-color: rgb(255, 255, 255);
     color: #0132c7;
@@ -99,13 +101,16 @@ h3 {
     transition: width 0.3s ease-in-out;
     z-index: 0;
 }
-.Tracking > span{
+
+.Tracking>span {
     position: relative;
     z-index: 1;
 }
-.Tracking:hover span{
+
+.Tracking:hover span {
     color: white;
 }
+
 .Tracking:hover::before {
     width: 100%;
 }
@@ -146,4 +151,32 @@ h3 {
     background: #38bdf8;
     font-weight: bold;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .action {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .Complaints,
+    .Tracking {
+        width: 80%;
+        min-width: unset;
+    }
+
+    .contact-form {
+        width: 90%;
+        padding: 20px;
+    }
 }

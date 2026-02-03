@@ -100,14 +100,15 @@ body {
     border-radius: 6px;
 }
 
-.drop{
+.drop {
     display: block;
     font-weight: 600;
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
     color: #374151;
 }
-.select{
+
+.select {
     margin-bottom: 0.5rem;
     width: 100%;
     padding: 0.75rem;
@@ -188,11 +189,51 @@ hr {
 }
 
 .back-sticker {
-  position: absolute;
-  top: 70px;
-  margin-right:18px;
-  font-size: 35px;
-  padding: 5px 5px;
-  border-radius: 50%;
-  cursor: pointer;
+    position: absolute;
+    top: 70px;
+    margin-right: 18px;
+    font-size: 35px;
+    padding: 5px 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .register-container {
+        width: 90%;
+        margin: 1rem;
+    }
+
+    .register-header h1 {
+        font-size: 24px;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .register-header p {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .register-body {
+        padding: 20px;
+    }
+
+    .register-row {
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 0;
+    }
+
+    .register-group {
+        margin-bottom: 16px;
+    }
+
+    .back-sticker {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        margin: 0;
+    }
 }

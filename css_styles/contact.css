@@ -1,10 +1,10 @@
-
-.boxes{
+.boxes {
     margin-left: 400px;
     margin-top: 50px;
 }
-.box1{
-    box-sizing: border-box ;
+
+.box1 {
+    box-sizing: border-box;
     border: 2px solid;
     border-radius: 15px;
     width: 90vh;
@@ -12,10 +12,11 @@
     margin-bottom: 50px;
     position: relative;
     cursor: pointer;
-    background:#eea410b0;
+    background: #eea410b0;
 }
-.box2{
-    box-sizing: border-box ;
+
+.box2 {
+    box-sizing: border-box;
     border: 2px solid;
     border-radius: 15px;
     margin-top: 110px;
@@ -24,30 +25,35 @@
     margin-bottom: 50px;
     position: relative;
     cursor: pointer;
-    background:#eea410b0;
+    background: #eea410b0;
 }
-h2{
+
+h2 {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 70px;
     font-size: 35px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.call{
+
+.call {
     margin-left: 60px;
 }
-.mail{
+
+.mail {
     margin-left: 60px;
 }
-.help{
+
+.help {
     display: flex;
     text-align: center;
     justify-content: center;
     margin-top: -165px;
     font-size: 25px;
 }
-.support{
+
+.support {
     display: flex;
     text-align: center;
     justify-content: center;
@@ -57,11 +63,55 @@ h2{
 }
 
 .back-sticker {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  font-size: 35px;
-  padding: 5px 5px;
-  border-radius: 50%;
-  cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 35px;
+    padding: 5px 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .boxes {
+        margin-left: 0;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .box1,
+    .box2 {
+        width: 90%;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-top: 30px;
+    }
+
+    .call,
+    .mail {
+        margin-left: 0;
+        text-align: center;
+        display: block;
+    }
+
+    .help,
+    .support {
+        margin-top: -100px;
+        font-size: 18px;
+        margin-left: 0;
+    }
+
+    .back-sticker {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+    }
 }
