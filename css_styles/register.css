@@ -190,12 +190,12 @@ hr {
 
 .back-sticker {
     position: absolute;
-    top: 70px;
-    margin-right: 18px;
-    font-size: 35px;
-    padding: 5px 5px;
-    border-radius: 50%;
-    cursor: pointer;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    margin: 0;
+    text-decoration: none;
+    color: white;
 }
 
 @media (max-width: 768px) {
@@ -236,4 +236,22 @@ hr {
         font-size: 24px;
         margin: 0;
     }
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 40px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.2rem;
 }

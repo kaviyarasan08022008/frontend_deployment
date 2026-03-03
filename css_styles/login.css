@@ -10,17 +10,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 20px;
 }
 
 .container {
   background: #fff;
-  width: 450px;
-  height: 600px;
+  width: 100%;
+  max-width: 450px;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
+  position: relative;
 }
 
 h2 {
@@ -76,8 +78,10 @@ h2 {
 }
 
 h4 {
-  margin-right: 300px;
-  padding: 2px;
+  width: 90%;
+  margin: 10px auto 5px auto;
+  text-align: left;
+  color: #333;
 }
 
 .remember {
@@ -98,13 +102,12 @@ h4 {
 }
 
 .back-sticker {
-  position: fixed;
-  margin-right: 30px;
-  margin-top: 325px;
-  font-size: 35px;
-  padding: 5px 5px;
-  border-radius: 50%;
-  cursor: pointer;
+  position: absolute;
+  top: 55px;
+  left: 33px;
+  font-size: 30px;
+  margin: 0;
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {
@@ -115,15 +118,12 @@ h4 {
   }
 
   .back-sticker {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    margin: 0;
     font-size: 24px;
+    top: 10px;
+    left: 10px;
   }
 
   h4 {
     margin-right: 0;
-    text-align: center;
   }
 }

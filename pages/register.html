@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register page</title>
     <link rel="stylesheet" href="../css_styles/register.css">
     <link rel="shortcut icon" href="../asset/icon.jpg" type="image/x-icon">
@@ -14,7 +14,7 @@
         <header class="register-header">
             <h1>Create New Account</h1>
             <p>Join the fight against corruption. Your identity remains protected.</p>
-            <div class="back-sticker" onclick="history.back()">⬅️</div>
+            <a href="../index.html" class="back-sticker">⬅️</a>
         </header>
 
         <form class="register-body" id="register-form">
@@ -41,7 +41,14 @@
                 </div>
                 <div class="register-group">
                     <label for="password">Password<span class="required">*</span></label>
-                    <input type="password" id="password" name="password" required>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" required>
+                        <span id="togglePassword" class="password-toggle">👁️</span>
+                    </div>
+                </div>
+                <div class="register-group">
+                    <label for="phone_number">Phone Number<span class="required">*</span></label>
+                    <input type="tel" id="phone_number" name="phone_number" required>
                 </div>
             </div>
 
@@ -63,12 +70,12 @@
                     <label for="village_town">Village/Town</label>
                     <input type="text" id="village_town" name="village_town">
                 </div>
-                     <label class="drop" for="user_role">User Role</label>
-                         <select name="user_role" id="user_role" class="select">
-                             <option value="user">people</option>
-                             <option value="collector">Collector</option>
-                    </select>
-              
+                <label class="drop" for="user_role">User Role</label>
+                <select name="user_role" id="user_role" class="select">
+                    <option value="user">people</option>
+                    <option value="collector">Collector</option>
+                </select>
+
             </div>
 
             <hr>
@@ -88,47 +95,7 @@
 
         <div id="register-message" style="margin-top:10px;color:green"></div>
 
-        <script>
-        // Simple register form handler
-        document.getElementById('register-form').addEventListener('submit', async function(e){
-            e.preventDefault();
-            const form = e.target;
-            const payload = {
-                first_name: form.first_name.value,
-                last_name: form.last_name.value,
-                email: form.email.value,
-                user_name: form.user_name.value,
-                password: form.password.value,
-                state: form.state.value,
-                district: form.district.value,
-                village_town: form.village_town.value,
-                user_role: form.user_role.value
-            };
-
-            try{
-                const res = await fetch('https://backend-deployment-elh1.onrender.com/users/', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                if(res.ok){
-                    const data = await res.json();
-                    // persist a simple client-side "logged in" id for demo flows
-                    localStorage.setItem('user_id', String(data.id));
-                    localStorage.setItem('user_name', data.user_name || data.first_name || '');
-                    alert('✅Account created (id: ' + data.id + '). Your id has been saved locally.')
-                    form.reset();
-                } else {
-                    const err = await res.json();
-                    document.getElementById('register-message').style.color = 'red';
-                    alert('❌ Error: ' + (err.detail || JSON.stringify(err)))
-                }
-            } catch (e) {
-                document.getElementById('register-message').style.color = 'red';
-                document.getElementById('register-message').textContent = 'Network error: ' + e.message;
-            }
-        });
-        </script>
+        <script src="../javascript/register.js"></script>
     </div>
 
 </body>
