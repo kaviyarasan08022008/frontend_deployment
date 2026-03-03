@@ -4,7 +4,7 @@ import API_BASE_URL from "./config.js";
 async function loadComplaints() {
   try {
     const res = await fetch(
-      "API_BASE_URL/complaints",
+      `${API_BASE_URL}/complaints`,
       { cache: "no-store" },
     );
     const data = await res.json();
@@ -64,7 +64,7 @@ async function updateComplaint(id) {
 
   try {
     const res = await fetch(
-      `API_BASE_URL/complaints/${id}/status`,
+      `${API_BASE_URL}/complaints/${id}/status`,
       {
         method: "PATCH",
         body: formData,
@@ -88,7 +88,7 @@ async function deleteComplaint(id) {
 
   try {
     const res = await fetch(
-      `API_BASE_URL/complaints/${id}`,
+      `${API_BASE_URL}/complaints/${id}`,
       {
         method: "DELETE",
       },

@@ -28,7 +28,7 @@ loginForm.addEventListener("submit", async (e) => {
 
   try {
     const res = await fetch(
-      "API_BASE_URL/users/login/",
+      `${API_BASE_URL}/users/login/`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

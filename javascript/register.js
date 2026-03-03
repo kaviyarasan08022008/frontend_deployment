@@ -58,7 +58,7 @@ document
     // Send Data
     try {
       const res = await fetch(
-        "API_BASE_URL/users/",
+        `${API_BASE_URL}/users/`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

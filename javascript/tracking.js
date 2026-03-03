@@ -17,7 +17,7 @@ async function trackComplaints() {
 
   try {
     const res = await fetch(
-      `API_BASE_URL/complaints/${complaintId}`,
+      `${API_BASE_URL}/complaints/${complaintId}`,
     );
 
     const resultsArea = document.getElementById("results-area");
