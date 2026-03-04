@@ -80,8 +80,8 @@ document
       if (res.ok) {
         const data = await res.json();
         localStorage.setItem("user_id", String(data.id));
-        alert(`Account created (id: ${data.id}).`);
-        form.reset();
+        alert(`Account created successfully! Please login.`);
+        window.location.href = "login.html";
       } else {
         const err = await res.json();
         alert("Error: " + (err.detail || JSON.stringify(err)));
