@@ -24,7 +24,7 @@ document
 
     try {
       const response = await fetch(
-        `${API_BASE_URL}/complaints/`,
+        `${API_BASE_URL}/complaints`,
         {
           method: "POST",
           body: formData,
