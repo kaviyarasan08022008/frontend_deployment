@@ -35,7 +35,7 @@ document
 
       if (response.ok) {
         alert(
-          `✅ Complaint submitted successfully!\n\nYour Complaint ID: RPT${result.id}\n\nPlease save this ID to track your complaint status.`,
+          `Complaint submitted successfully!\n\nYour Complaint ID: RPT${result.id}\n\nPlease save this ID to track your complaint status.`,
         );
         form.reset();
       } else {
@@ -46,10 +46,10 @@ document
             ? result.detail[0].msg
             : result.detail;
         }
-        alert("❌ Error: " + msg);
+        alert("Error: " + msg);
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("❌ Server connection failed");
+      alert("Server connection failed");
     }
   });

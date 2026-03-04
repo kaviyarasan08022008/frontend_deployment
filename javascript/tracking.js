@@ -58,6 +58,6 @@ async function trackComplaints() {
     resultsArea.style.display = "block";
   } catch (error) {
     console.error(error);
-    alert("❌ Error fetching data");
+    alert("Error fetching data");
   }
 }

@@ -50,7 +50,7 @@ async function loadComplaints() {
       tableBody.appendChild(row);
     });
   } catch (error) {
-    alert("❌ Failed to load complaints");
+    alert("Failed to load complaints");
     console.error(error);
   }
 }
@@ -72,14 +72,14 @@ async function updateComplaint(id) {
     );
 
     if (res.ok) {
-      alert(`✅ Complaint ${id} updated to ${status}`);
+      alert(`Complaint ${id} updated to ${status}`);
       loadComplaints(); // reload to reflect changes
     } else {
-      alert("❌ Update Failed");
+      alert("Update Failed");
     }
   } catch (error) {
     console.error(error);
-    alert("❌ Error Updating");
+    alert("Error Updating");
   }
 }
 
@@ -95,14 +95,14 @@ async function deleteComplaint(id) {
     );
 
     if (res.ok) {
-      alert("✅ Complaint Deleted");
+      alert("Complaint Deleted");
       loadComplaints(); // reload list
     } else {
-      alert("❌ Delete Failed");
+      alert("Delete Failed");
     }
   } catch (error) {
     console.error(error);
-    alert("❌ Error Deleting");
+    alert("Error Deleting");
   }
 }
 

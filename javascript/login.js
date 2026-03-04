@@ -43,7 +43,7 @@ loginForm.addEventListener("submit", async (e) => {
     const data = await res.json();
 
     if (!res.ok) {
-      alert("❌ " + (data.detail || "Login failed"));
+      alert((data.detail || "Login failed"));
       return;
     }
 
@@ -54,6 +54,6 @@ loginForm.addEventListener("submit", async (e) => {
     window.location.href =
       data.user_role === "collector" ? "admin.html" : "filecomplaint.html";
   } catch (err) {
-    alert("❌ Network error");
+    alert("Network error");
   }
 });

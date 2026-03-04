@@ -40,13 +40,13 @@ document
 
     // Validation Logic
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
-      return (msg.textContent = "❌ Invalid email address.");
+      return (msg.textContent = "Invalid email address.");
     if (user.length < 3)
-      return (msg.textContent = "❌ Username too short (min 3 chars).");
+      return (msg.textContent = "Username too short (min 3 chars).");
     if (!/^[a-zA-Z_]+$/.test(user))
-      return (msg.textContent = "❌ Username: Letters & _ only (No numbers).");
+      return (msg.textContent = "Username: Letters & _ only (No numbers).");
     if (!/^\d{10}$/.test(phone))
-      return (msg.textContent = "❌ Phone must be 10 digits.");
+      return (msg.textContent = "Phone must be 10 digits.");
 
     // Collector Email Validation
     const role = form.user_role.value;
@@ -80,13 +80,13 @@ document
       if (res.ok) {
         const data = await res.json();
         localStorage.setItem("user_id", String(data.id));
-        alert(`✅ Account created (id: ${data.id}).`);
+        alert(`Account created (id: ${data.id}).`);
         form.reset();
       } else {
         const err = await res.json();
-        alert("❌ Error: " + (err.detail || JSON.stringify(err)));
+        alert("Error: " + (err.detail || JSON.stringify(err)));
       }
     } catch (err) {
-      alert(`❌ Network error failed to create account.`);
+      alert(`Network error failed to create account.`);
     }
   });
