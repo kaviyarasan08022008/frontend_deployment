@@ -94,8 +94,15 @@ button:hover {
 
 @media (max-width: 768px) {
   .track-container {
-    width: 95%;
-    margin-top: 20px;
+    width: 90%;
+    margin: 20px auto;
+    box-sizing: border-box;
+  }
+
+  input,
+  button {
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .back-sticker {
