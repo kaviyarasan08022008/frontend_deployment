@@ -35,9 +35,10 @@ async function loadComplaints() {
         <td>${evidenceHtml}</td>
         <td>
           <select id="status-${complaint.id}">
-            <option value="not-approved">Not Approved</option>
-            <option value="pending">Pending</option>
-            <option value="solved">Solved</option>
+            <option value="Not approved" ${complaint.status === "Not approved" || !complaint.status ? "selected" : ""}>Not Approved</option>
+            <option value="pending" ${complaint.status === "pending" || complaint.status === "Pending" ? "selected" : ""}>Pending</option>
+            <option value="in_progress" ${complaint.status === "in_progress" ? "selected" : ""}>In Progress</option>
+            <option value="solved" ${complaint.status === "solved" || complaint.status === "Solved" ? "selected" : ""}>Solved</option>
           </select>
           <button class="ed-but" onclick="updateComplaint(${complaint.id})">Update</button>
           <button class="del-but" onclick="deleteComplaint(${complaint.id})">Delete</button>
@@ -60,6 +61,7 @@ async function updateComplaint(id) {
   formData.append("status", status);
 
   try {
+    // 1. Update the complaint status
     const res = await fetch(
       `${API_BASE_URL}/complaints/${id}/status`,
       {
@@ -68,11 +70,33 @@ async function updateComplaint(id) {
       },
     );
 
-    if (res.ok) {
-      alert(`Complaint ${id} updated to ${status}`);
+    if (!res.ok) {
+      alert("Update Failed");
+      return;
+    }
+
+    // 2. Create an Action in the actions table
+    // Assuming collector_id is 1 for now (admin), since there's no login info here
+    const actionData = {
+      status: status,
+      remarks: `Status updated to ${status} from admin dashboard.`,
+      complaint_id: id,
+      collector_id: 1 // Default to 1, change if you have login session
+    };
+
+    const actionRes = await fetch(`${API_BASE_URL}/actions`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(actionData)
+    });
+
+    if (actionRes.ok) {
+      alert(`Complaint ${id} updated to ${status} and action recorded`);
       loadComplaints(); // reload to reflect changes
     } else {
-      alert("Update Failed");
+      alert("Action creation failed, but status was updated.");
     }
   } catch (error) {
     console.error(error);
