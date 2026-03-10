@@ -76,12 +76,11 @@ async function updateComplaint(id) {
     }
 
     // 2. Create an Action in the actions table
-    // Assuming collector_id is 1 for now (admin), since there's no login info here
     const actionData = {
       status: status,
       remarks: `Status updated to ${status} from admin dashboard.`,
       complaint_id: id,
-      collector_id: 1 // Default to 1, change if you have login session
+      collector_id: null
     };
 
     const actionRes = await fetch(`${API_BASE_URL}/actions`, {
