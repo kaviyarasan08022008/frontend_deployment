@@ -2,8 +2,7 @@
 async function loadComplaints() {
   try {
     const res = await fetch(
-      `${API_BASE_URL}/complaints`,
-      { cache: "no-store" },
+      `${API_BASE_URL}/complaints`
     );
     const data = await res.json();
 
@@ -64,7 +63,7 @@ async function updateComplaint(id) {
     const res = await fetch(
       `${API_BASE_URL}/complaints/${id}/status`,
       {
-        method: "PATCH",
+        method: "PUT",
         body: formData,
       },
     );
