@@ -6,11 +6,11 @@ async function trackComplaints() {
   }
 
   // Extract numeric ID from "RPT123" or just "123"
-  let complaintId = inputVal.toUpperCase().replace("RPT", "");
+  let complaintId = inputVal.toUpperCase().replace("CRP", "");
 
   if (isNaN(complaintId) || complaintId === "") {
     alert(
-      "Invalid Complaint ID format. Please use format like RPT5 or just 5.",
+      "Invalid Complaint ID format. Please use format like CRP5 or just 5.",
     );
     return;
   }
