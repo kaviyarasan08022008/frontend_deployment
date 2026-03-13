@@ -1,3 +1,5 @@
+import API_BASE_URL from "./config.js";
+
 async function trackComplaints() {
   const inputVal = document.getElementById("people-id").value.trim();
   if (!inputVal) {
