@@ -1,4 +1,4 @@
-import API_BASE_URL from "./config.js";
+// import API_BASE_URL from "./config.js";
 
 // 1.Phone: Numbers only, max 10 digits
 document.getElementById("phone_number").addEventListener("input", function (e) {

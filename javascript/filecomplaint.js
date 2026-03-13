@@ -1,4 +1,4 @@
-import API_BASE_URL from "./config.js";
+// import API_BASE_URL from "./config.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const dateInput = document.querySelector('input[name="incident_date"]');

@@ -1,4 +1,4 @@
-import API_BASE_URL from "./config.js";
+// import API_BASE_URL from "./config.js";
 
 const adminBtn = document.getElementById("adminBtn");
 const userBtn = document.getElementById("userBtn");
