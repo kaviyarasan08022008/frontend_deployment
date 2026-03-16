@@ -1,10 +1,54 @@
 // import API_BASE_URL from "./config.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const dateInput = document.querySelector('input[name="incident_date"]');
   if (dateInput) {
     const today = new Date().toISOString().split("T")[0];
     dateInput.setAttribute("max", today);
+  }
+
+  // Find inputs
+  const anonCheckbox = document.querySelector('input[name="is_anonymous"]');
+  const contactInfoDiv = document.querySelector('.contact-info');
+  const contactName = document.querySelector('input[name="contact_name"]');
+  const contactPhone = document.querySelector('input[name="contact_phone"]');
+  const contactEmail = document.querySelector('input[name="contact_email"]');
+
+  // Fetch user data if user is logged in
+  const userId = localStorage.getItem("user_id");
+  let userData = null;
+
+  if (userId) {
+    try {
+      const resp = await fetch(`${API_BASE_URL}/users/${userId}`);
+      if (resp.ok) {
+        userData = await resp.json();
+      }
+    } catch (e) {
+      console.error("Failed to fetch user data", e);
+    }
+  }
+
+  function toggleContactInfo() {
+    if (anonCheckbox.checked) {
+      contactInfoDiv.style.display = 'none';
+      if (contactName) contactName.value = '';
+      if (contactPhone) contactPhone.value = '';
+      if (contactEmail) contactEmail.value = '';
+    } else {
+      contactInfoDiv.style.display = 'block';
+      if (userData) {
+        if (contactName) contactName.value = userData.first_name + ' ' + userData.last_name;
+        if (contactEmail) contactEmail.value = userData.email;
+        if (contactPhone && userData.phone_number) contactPhone.value = userData.phone_number;
+      }
+    }
+  }
+
+  if (anonCheckbox && contactInfoDiv) {
+    anonCheckbox.addEventListener('change', toggleContactInfo);
+    // Set initial state
+    toggleContactInfo();
   }
 });
 
