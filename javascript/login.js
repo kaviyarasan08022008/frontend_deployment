@@ -53,9 +53,8 @@ loginForm.addEventListener("submit", async (e) => {
     localStorage.setItem("user_name", data.user_name);
     localStorage.setItem("user_role", data.user_role);
 
-    window.location.href =
-      data.user_role === "collector" ? "admin.html" : "filecomplaint.html";
-  } catch (err) {
+    window.location.href = data.user_role === "collector" ? "admin.html" : "filecomplaint.html";} 
+    catch (err) {
     alert("Network error");
   }
 });

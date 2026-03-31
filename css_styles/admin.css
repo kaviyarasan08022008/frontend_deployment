@@ -172,6 +172,48 @@
       margin-left: 5px;
     }
 
+    .appear-toaster,
+    .disappear-toaster{
+      position: fixed;
+      right: 40px;
+      top: 95px;
+      width: 400px;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.486);
+      animation: appear-toaster .5s;
+    }
+    
+    .appear-toaster{
+      transform: translateX(0);
+    }
+    
+    @keyframes appear-toaster {
+      from{
+        transform: translateX(450px);
+      }
+      to{
+        transform: translateX(0);
+      }
+    }
+    
+    
+    .disappear-toaster{
+      transform: translateX(450px);
+      animation: disappear-toaster .5s;
+    }
+
+    @keyframes disappear-toaster {
+      from{
+        transform: translateX(0);
+      }
+      to{
+        transform: translateX(450px);
+      }
+    }
+
+
     .del-but {
       background-color: #e73930;
       color: white;

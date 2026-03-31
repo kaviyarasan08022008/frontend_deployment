@@ -27,10 +27,8 @@ document.getElementById("togglePassword").onclick = function () {
 };
 
 //Form Validations
-document
-  .getElementById("register-form")
-  .addEventListener("submit", async function (e) {
-    e.preventDefault();
+document.getElementById("register-form").addEventListener("submit", async function (e) {e.preventDefault();
+  
     const form = e.target;
     const msg = document.getElementById("register-message");
     msg.textContent = "";
@@ -45,7 +43,7 @@ document
       return (msg.textContent = "Invalid email address.");
     if (user.length < 3)
       return (msg.textContent = "Username too short (min 3 chars).");
-    if (!/^[a-zA-Z_]+$/.test(user))
+    if (!/^[a-zA-Z]+$/.test(user))
       return (msg.textContent = "Username: Letters & _ only (No numbers).");
     if (!/^\d{10}$/.test(phone))
       return (msg.textContent = "Phone must be 10 digits.");

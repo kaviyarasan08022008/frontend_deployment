@@ -20,13 +20,11 @@ async function loadComplaints() {
     document.getElementById("solved-count").innerText = solved;
     document.getElementById("pending-count").innerText = pending;
 
-    data.forEach((complaint) => {
+    data.reverse().forEach((complaint) => {
       const row = document.createElement("tr");
 
       // Evidence Link logic
-      const evidenceHtml = complaint.image_url
-        ? `<a href="${complaint.image_url}" target="_blank" style="color:blue;text-decoration:underline">View Evidence</a>`
-        : "No File";
+      const evidenceHtml = complaint.image_url ? `<a href="${complaint.image_url}" target="_blank" style="color:blue;text-decoration:underline">View Evidence</a>`: "No File";
 
       row.innerHTML = `
         <td>RPT${complaint.id}</td>
@@ -57,10 +55,11 @@ async function loadComplaints() {
 async function updateComplaint(id) {
   const statusSelect = document.getElementById(`status-${id}`);
   const status = statusSelect.value;
+  const adminDashboard = document.getElementById("admin-dashboard")
+
 
   const formData = new FormData();
   formData.append("status", status);
-
   try {
     // 1. Update the complaint status
     const res = await fetch(
@@ -93,16 +92,44 @@ async function updateComplaint(id) {
     });
 
     if (actionRes.ok) {
-      alert(`Complaint ${id} updated to ${status} and action recorded`);
+
+
+      const toasterDiv = document.createElement('div')
+      toasterDiv.classList.add("appear-toaster")
+      toasterDiv.style.backgroundColor = "#03c400"
+      toasterDiv.innerHTML=`
+      <p>Complaint <span style="font-weight: bold;">${id}</span> updated to <span style="font-weight: bold;">${status}</span> and action recorded</p>
+      `
+      adminDashboard.appendChild(toasterDiv)
+      setTimeout(() => {
+        toasterDiv.classList.remove("appear-toaster")
+        toasterDiv.classList.add("disappear-toaster")
+      }, 5000)
+
+
+
       loadComplaints(); // reload to reflect changes
     } else {
       alert("Action creation failed, but status was updated.");
     }
   } catch (error) {
     console.error(error);
-    alert("Error Updating");
+      const toasterDiv = document.createElement('div')
+      toasterDiv.classList.add("appear-toaster")
+      toasterDiv.style.backgroundColor = "#c40000"
+      toasterDiv.innerHTML=`
+      <p>Complaint <span style="font-weight: bold;">${id}</span> updated to <span style="font-weight: bold;">${status}</span> and action recorded</p>
+      `
+      adminDashboard.appendChild(toasterDiv)
+      setTimeout(() => {
+        toasterDiv.classList.remove("appear-toaster")
+        toasterDiv.classList.add("disappear-toaster")
+      }, 5000)
   }
 }
+
+
+
 
 async function deleteComplaint(id) {
   if (!confirm("Are you sure you want to delete this complaint?")) return;

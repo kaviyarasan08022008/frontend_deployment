@@ -47,16 +47,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (anonCheckbox && contactInfoDiv) {
     anonCheckbox.addEventListener('change', toggleContactInfo);
-    // Set initial state
     toggleContactInfo();
   }
 });
 
-document
-  .getElementById("complaint-form")
-  .addEventListener("submit", async function (e) {
-    e.preventDefault();
+// Stop the form submission and save the form data
+document.getElementById("complaint-form").addEventListener("submit", async function (e) {e.preventDefault();
 
+    // Take the stopped (saved) data, get it from the form variables, and add it into a dictionary    
     const form = document.getElementById("complaint-form");
     const formData = new FormData(form);
 
@@ -88,9 +86,7 @@ document
         // Handle both validation errors and string errors
         let msg = "Unknown Error";
         if (result.detail) {
-          msg = Array.isArray(result.detail)
-            ? result.detail[0].msg
-            : result.detail;
+          msg = Array.isArray(result.detail) ? result.detail[0].msg : result.detail;
         }
         alert("Error: " + msg);
       }
